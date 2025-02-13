@@ -23,20 +23,11 @@ public class UserController {
     public User addUser(@Valid @RequestBody User user) {
         return userService.registerUser(user);
     }
-//    public ResponseEntity<?> addUser(@Valid @RequestBody User user) {
-//        userService.registerUser(user);
-//        String token = userService.generateToken(user.getUsername());
-//        return ResponseEntity.ok(token);
-//    }
 
     //    Login
     @PostMapping("/loginUser")
     @CrossOrigin("http://localhost:5173")
-    public ResponseEntity<?> loginUser(@Valid @RequestBody LoginRequest loginRequest) {
-//        return userService.loginUser(loginRequest);
-        String token = userService.generateToken(loginRequest.getUserId());
-//        String token = userService.loginUser(loginRequest);
-        System.out.println("Token : "+token);
-        return ResponseEntity.ok(token);
+    public String loginUser(@Valid @RequestBody LoginRequest loginRequest) {
+        return userService.loginUser(loginRequest);
     }
 }
